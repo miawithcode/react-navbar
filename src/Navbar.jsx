@@ -1,9 +1,17 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { links, social } from './data';
 
 const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
+  const linksContainerRef = useRef(null);
+  const linksRef = useRef(null);
+
+  const linkStyle = {
+    height: showLinks
+      ? `${linksRef.current.getBoundingClientRect().height}px`
+      : '0px',
+  };
 
   return (
     <nav>
@@ -19,11 +27,11 @@ const Navbar = () => {
         </div>
 
         <div
-          className={
-            showLinks ? 'links-container show-container' : 'links-container'
-          }
+          className="links-container"
+          ref={linksContainerRef}
+          style={linkStyle}
         >
-          <ul className="links">
+          <ul className="links" ref={linksRef}>
             {links.map((link) => {
               const { id, url, text } = link;
               return (

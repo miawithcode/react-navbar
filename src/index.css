@@ -40,11 +40,6 @@ nav {
 }
 
 .links-container {
-  height: 0;
   overflow: hidden;
   transition: all .3s cubic-bezier(0,0,.5,1)
-}
-
-.show-container {
-  height: 10rem;
 }
